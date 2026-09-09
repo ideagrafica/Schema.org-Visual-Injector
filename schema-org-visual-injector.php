@@ -7,7 +7,7 @@
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Marco De Sangro (inCod)
- * Author URI:        https://www.incod.it/schema-visual-injector/
+ * Author URI:        https://www.studioideagrafica.it/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       schema-org-visual-injector
