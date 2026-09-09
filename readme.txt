@@ -18,11 +18,13 @@ Whether you are optimizing Blog Posts, Pages, WooCommerce Products, or Custom Po
 
 = Key Features =
 
-* **Full Schema.org Vocabulary:** Built-in dictionary supporting standard Schema.org types including Article, Product, Event, LocalBusiness, Organization, Person, FAQPage, Recipe, Service, Book, and WebPage.
+* **Complete Schema.org Vocabulary:** All 1400+ official Schema.org types available in a searchable dropdown — from Article and Product to every type in the full schema.org hierarchy.
+* **Curated Types with Detailed Fields:** 11 curated types (Article, Book, Event, FAQPage, LocalBusiness, Organization, Person, Product, Recipe, Service, WebPage) with type-specific property fields.
 * **Nested Schema Objects:** Automatic sub-property mapping for complex types — PostalAddress for LocalBusiness, Place/Organization for Event, Offer for Product, and more.
 * **FAQPage Ready:** Built-in Question & Answer repeater for FAQ structured data with dynamic token support.
 * **Universal Post Type Support:** Works seamlessly with standard Posts, Pages, WooCommerce Products, and custom post types (CPTs).
 * **Dynamic Tokens:** Map Schema properties using dynamic placeholders like `{post_title}`, `{featured_image_url}`, `{meta:your_key}`, `{acf:your_field}`, `{option:key}`, or `{site:url}`.
+* **Searchable Type Selector:** Quickly find any of the 1400+ Schema.org types with the built-in search filter.
 * **Lightweight & High Performance:** Zero database clutter. Zero external API calls on frontend load. Native JSON-LD output in `<head>`.
 * **Developer Friendly:** Fully extensible via WP actions and filters, including the `sovi_json_ld_payload` filter.
 

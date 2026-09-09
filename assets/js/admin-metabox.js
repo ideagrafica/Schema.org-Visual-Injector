@@ -2,7 +2,7 @@
  * Schema.org Visual Injector — Admin Metabox JS
  *
  * Handles dynamic property switching, nested group visibility,
- * FAQ entity management, and custom property management.
+ * FAQ entity management, custom property management, and type search.
  *
  * @package Schema_Org_Visual_Injector
  */
@@ -14,7 +14,8 @@
 	var SOVIMetabox = {
 
 		/**
-		 * Default properties per Schema type (mirrors PHP dictionary).
+		 * Default properties per curated Schema type (mirrors PHP dictionary).
+		 * Non-curated types use common fields only.
 		 */
 		typeProperties: {
 			Article:        ['name', 'description', 'image', 'url', 'author', 'datePublished', 'dateModified', 'headline'],
@@ -30,12 +31,79 @@
 			WebPage:        ['name', 'description', 'image', 'url', 'breadcrumb', 'datePublished', 'dateModified']
 		},
 
+		/**
+		 * Common properties for all non-curated types.
+		 */
+		commonProperties: ['name', 'description', 'image', 'url'],
+
 		init: function () {
 			$(document).on('change', '#sovi_schema_type', this.onTypeChange);
 			$(document).on('click', '#sovi-add-custom-prop', this.addCustomProperty);
 			$(document).on('click', '.sovi-remove-custom-prop', this.removeCustomProperty);
 			$(document).on('click', '#sovi-add-faq-row', this.addFaqRow);
 			$(document).on('click', '.sovi-remove-faq-row', this.removeFaqRow);
+
+			// Type search functionality.
+			$(document).on('input', '#sovi-type-search', this.onTypeSearch);
+			$(document).on('focus', '#sovi-type-search', this.onTypeSearchFocus);
+			$(document).on('blur', '#sovi-type-search', this.onTypeSearchBlur);
+		},
+
+		/**
+		 * Filter type dropdown options based on search input.
+		 */
+		onTypeSearch: function () {
+			var query = $(this).val().toLowerCase();
+			var $select = $('#sovi_schema_type');
+			var $options = $select.find('option');
+			var $optgroups = $select.find('optgroup');
+
+			if (query === '') {
+				$options.show();
+				$optgroups.show();
+				return;
+			}
+
+			$options.each(function () {
+				var text = $(this).text().toLowerCase();
+				var value = $(this).val().toLowerCase();
+				if (text.indexOf(query) !== -1 || value.indexOf(query) !== -1) {
+					$(this).show();
+				} else {
+					$(this).hide();
+				}
+			});
+
+			// Hide empty optgroups.
+			$optgroups.each(function () {
+				var $visibleOptions = $(this).find('option:visible');
+				if ($visibleOptions.length === 0) {
+					$(this).hide();
+				} else {
+					$(this).show();
+				}
+			});
+		},
+
+		/**
+		 * Select all text on focus for easier searching.
+		 */
+		onTypeSearchFocus: function () {
+			$(this).select();
+		},
+
+		/**
+		 * Clear search on blur.
+		 */
+		onTypeSearchBlur: function () {
+			// Small delay to allow click on dropdown option.
+			var $input = $(this);
+			setTimeout(function () {
+				$input.val('');
+				var $select = $('#sovi_schema_type');
+				$select.find('option').show();
+				$select.find('optgroup').show();
+			}, 200);
 		},
 
 		/**
@@ -44,7 +112,7 @@
 		 */
 		onTypeChange: function () {
 			var type = $(this).val();
-			var props = SOVIMetabox.typeProperties[type] || SOVIMetabox.typeProperties['Article'];
+			var props = SOVIMetabox.typeProperties[type] || SOVIMetabox.commonProperties;
 
 			// Rebuild standard property fields.
 			var $container = $('#sovi-properties-container');
@@ -76,6 +144,9 @@
 			} else {
 				$('#sovi-faq-container').hide();
 			}
+
+			// Update search field placeholder.
+			$('#sovi-type-search').attr('placeholder', 'Current: ' + type + ' — Search to change...');
 		},
 
 		/**

@@ -130,9 +130,31 @@
 	font-size: 12px;
 }
 
+/* Schema Type Search */
+#sovi-type-search {
+	margin-bottom: 6px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	padding-left: 32px;
+}
+
 /* Schema Type Select */
 #sovi_schema_type {
 	margin-bottom: 10px;
+	max-height: 300px;
+	font-size: 13px;
+}
+
+#sovi_schema_type optgroup {
+	font-weight: 700;
+	color: #1d2327;
+	font-style: normal;
+}
+
+#sovi_schema_type option {
+	font-weight: 400;
+	padding: 4px 8px;
 }
 
 /* Nested Property Groups */

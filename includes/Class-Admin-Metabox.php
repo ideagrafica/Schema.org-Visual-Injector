@@ -63,14 +63,14 @@ class Admin_Metabox {
 		$enabled     = get_post_meta( $post->ID, '_sovi_schema_enabled', true );
 		$schema_type = get_post_meta( $post->ID, '_sovi_schema_type', true ) ?: 'Article';
 		$payload     = get_post_meta( $post->ID, '_sovi_schema_payload', true );
-		$types       = Schema_Dictionary::get_supported_types();
+		$curated     = Schema_Dictionary::get_curated_types();
+		$all_types   = Schema_Dictionary::get_supported_types();
 
 		if ( ! is_array( $payload ) ) {
 			$payload = array();
 		}
 
-		$props        = Schema_Dictionary::get_default_properties_for_type( $schema_type );
-		$all_types    = Schema_Dictionary::get_supported_types();
+		$props = Schema_Dictionary::get_default_properties_for_type( $schema_type );
 		?>
 		<div class="sovi-metabox-wrapper">
 			<p>
@@ -82,12 +82,24 @@ class Admin_Metabox {
 
 			<p>
 				<label for="sovi_schema_type"><strong><?php esc_html_e( 'Select Schema.org Type:', 'schema-org-visual-injector' ); ?></strong></label><br/>
-				<select name="sovi_schema_type" id="sovi_schema_type" class="widefat">
-					<?php foreach ( $types as $key => $label ) : ?>
-						<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $schema_type, $key ); ?>>
-							<?php echo esc_html( $label ); ?>
-						</option>
-					<?php endforeach; ?>
+				<input type="text" id="sovi-type-search" class="widefat" placeholder="<?php esc_attr_e( 'Search schema types...', 'schema-org-visual-injector' ); ?>" autocomplete="off" />
+				<select name="sovi_schema_type" id="sovi_schema_type" class="widefat" size="10">
+					<optgroup label="<?php esc_attr_e( 'Curated Types (with detailed fields)', 'schema-org-visual-injector' ); ?>">
+						<?php foreach ( $curated as $key => $label ) : ?>
+							<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $schema_type, $key ); ?>>
+								<?php echo esc_html( $label ); ?>
+							</option>
+						<?php endforeach; ?>
+					</optgroup>
+					<optgroup label="<?php esc_attr_e( 'All Schema.org Types', 'schema-org-visual-injector' ); ?>">
+						<?php foreach ( $all_types as $key => $label ) : ?>
+							<?php if ( ! isset( $curated[ $key ] ) ) : ?>
+								<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $schema_type, $key ); ?>>
+									<?php echo esc_html( $label ); ?>
+								</option>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					</optgroup>
 				</select>
 			</p>
 
@@ -108,10 +120,10 @@ class Admin_Metabox {
 				<?php endforeach; ?>
 			</div>
 
-			<!-- Nested property groups — rendered for ALL types, visibility controlled via data-type + JS -->
+			<!-- Nested property groups — rendered for curated types only -->
 			<div id="sovi-nested-container">
 				<?php
-				foreach ( $all_types as $type_key => $type_label ) :
+				foreach ( $curated as $type_key => $type_label ) :
 					$groups = Schema_Dictionary::get_nested_groups_for_type( $type_key );
 					if ( empty( $groups ) ) {
 						continue;

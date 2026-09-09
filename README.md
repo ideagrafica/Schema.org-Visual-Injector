@@ -5,13 +5,15 @@ A powerful WordPress plugin that lets you visually inject Schema.org structured 
 ## Features
 
 - **Visual Interface**: Easy-to-use metabox in the post editor
-- **11 Schema.org Types**: Article, Book, Event, FAQPage, LocalBusiness, Organization, Person, Product, Recipe, Service, WebPage
+- **Complete Schema.org Vocabulary**: All 1400+ official Schema.org types in a searchable dropdown
+- **11 Curated Types**: Article, Book, Event, FAQPage, LocalBusiness, Organization, Person, Product, Recipe, Service, WebPage — with type-specific fields
 - **Dynamic Tokens**: Use placeholders like `{post_title}`, `{post_permalink}`, `{featured_image_url}` that auto-fill with post data
 - **Nested Objects**: Support for complex Schema.org structures like PostalAddress, Place, Offer
 - **FAQ Support**: Built-in FAQ repeater for FAQPage schema with Question/Answer pairs
 - **Custom Post Types**: Works with any public post type
 - **ACF/Meta Box Integration**: Pull data from custom fields using `{acf:field_name}` or `{meta:key}`
 - **WordPress Options**: Access any option using `{option:key}`
+- **Searchable Type Selector**: Quickly find any Schema.org type with the built-in search filter
 - **Developer Friendly**: Filter `sovi_json_ld_payload` to modify output
 
 ## Installation
@@ -36,22 +38,27 @@ A powerful WordPress plugin that lets you visually inject Schema.org structured 
 | `{site:description}` | Site description |
 | `{site:language}` | Site language |
 
-## Schema Types & Fields
+## Schema Types
 
-### Article
-- headline, description, author, datePublished, dateModified, image
+### Curated Types (with detailed fields)
 
-### Event
-- name, description, startDate, endDate, location (Place), organizer (Organization)
+| Type | Extra Fields |
+|------|-------------|
+| Article | headline, author, datePublished, dateModified |
+| Book | isbn, author, bookFormat |
+| Event | startDate, endDate, location (Place), organizer (Organization) |
+| FAQPage | FAQ repeater with Question/Answer pairs |
+| LocalBusiness | telephone, priceRange, address (PostalAddress) |
+| Organization | logo, sameAs, contactPoint |
+| Person | jobTitle, sameAs, worksFor |
+| Product | sku, priceCurrency, availability, offers (Offer) |
+| Recipe | cookTime, recipeIngredient, recipeInstructions |
+| Service | areaServed, serviceType, provider (Organization) |
+| WebPage | breadcrumb, datePublished, dateModified |
 
-### LocalBusiness
-- name, description, telephone, email, address (PostalAddress), url, priceRange
+### All Schema.org Types
 
-### Product
-- name, description, sku, brand, offers (Offer)
-
-### FAQPage
-- FAQ repeater with Question/Answer pairs
+All 1400+ official Schema.org types are available with common fields (name, description, image, url). Use the searchable dropdown to find any type from the full schema.org hierarchy.
 
 ## Developer Filter
 
