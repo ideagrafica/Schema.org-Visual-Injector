@@ -1,0 +1,220 @@
+/**
+ * Schema.org Visual Injector — Admin Styles
+ *
+ * @package Schema_Org_Visual_Injector
+ */
+
+/* Metabox Wrapper */
+.sovi-metabox-wrapper {
+	padding: 10px 0;
+}
+
+.sovi-metabox-wrapper label {
+	display: inline-block;
+	margin-bottom: 4px;
+}
+
+.sovi-metabox-wrapper .widefat {
+	margin-bottom: 8px;
+}
+
+/* Properties Container */
+#sovi-properties-container h4 {
+	margin: 12px 0 8px;
+	font-size: 13px;
+	color: #1d2327;
+}
+
+#sovi-properties-container p {
+	margin: 4px 0;
+}
+
+#sovi-properties-container label {
+	display: inline-block;
+	min-width: 140px;
+	font-weight: 600;
+	color: #1d2327;
+}
+
+#sovi-properties-container input[type="text"] {
+	max-width: 100%;
+}
+
+/* Custom Properties Section */
+#sovi-custom-properties {
+	margin-top: 15px;
+	padding-top: 10px;
+	border-top: 1px dashed #c3c4c7;
+}
+
+#sovi-custom-properties h4 {
+	margin: 12px 0 4px;
+	font-size: 13px;
+	color: #1d2327;
+}
+
+.sovi-custom-prop-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 4px 0;
+}
+
+.sovi-custom-prop-row input.regular-text {
+	flex: 1;
+}
+
+.sovi-remove-custom-prop {
+	color: #b32d2e !important;
+	border-color: #b32d2e !important;
+	min-width: 32px;
+}
+
+.sovi-remove-custom-prop:hover {
+	color: #a00 !important;
+	background: #b32d2e !important;
+	border-color: #a00 !important;
+}
+
+/* Metabox Footer Promo */
+.sovi-metabox-footer {
+	margin-top: 15px;
+	padding-top: 10px;
+	border-top: 1px solid #ddd;
+	font-size: 12px;
+	color: #666;
+}
+
+.sovi-promo-link {
+	text-decoration: none;
+	color: #2271b1;
+	font-weight: 600;
+}
+
+.sovi-promo-link:hover {
+	color: #135e96;
+	text-decoration: underline;
+}
+
+/* Settings Page Promo Sidebar */
+.sovi-promo-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	padding: 15px;
+	margin-top: 20px;
+	border-left: 4px solid #2271b1;
+	max-width: 500px;
+}
+
+.sovi-promo-card h3 {
+	margin-top: 0;
+	font-size: 15px;
+}
+
+.sovi-promo-card p {
+	margin: 8px 0;
+	line-height: 1.5;
+}
+
+/* Info Card (Tokens Reference) */
+.sovi-info-card table th,
+.sovi-info-card table td {
+	text-align: left;
+	padding: 6px 10px;
+}
+
+.sovi-info-card code {
+	background: #f0f0f1;
+	padding: 2px 6px;
+	border-radius: 3px;
+	font-size: 12px;
+}
+
+/* Schema Type Select */
+#sovi_schema_type {
+	margin-bottom: 10px;
+}
+
+/* Nested Property Groups */
+#sovi-nested-container {
+	margin-top: 10px;
+}
+
+.sovi-nested-group {
+	margin: 10px 0;
+	padding: 10px 12px;
+	background: #f9f9f9;
+	border: 1px solid #e0e0e0;
+	border-left: 3px solid #2271b1;
+}
+
+.sovi-nested-group h4 {
+	margin: 0 0 8px;
+	font-size: 13px;
+	color: #1d2327;
+}
+
+.sovi-nested-type-hint {
+	font-weight: normal;
+	font-style: italic;
+	color: #666;
+	font-size: 11px;
+}
+
+.sovi-nested-group p {
+	margin: 4px 0;
+}
+
+.sovi-nested-group label {
+	display: inline-block;
+	min-width: 140px;
+	font-weight: 600;
+	color: #1d2327;
+}
+
+/* FAQ Entities Section */
+#sovi-faq-container {
+	margin-top: 10px;
+	padding: 12px;
+	background: #f0f6fc;
+	border: 1px solid #c3c4c7;
+	border-left: 3px solid #2271b1;
+}
+
+#sovi-faq-container h4 {
+	margin: 0 0 4px;
+	font-size: 13px;
+	color: #1d2327;
+}
+
+.sovi-faq-row {
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+.sovi-faq-row label {
+	display: block;
+	margin-bottom: 4px;
+	color: #1d2327;
+}
+
+.sovi-remove-faq-row {
+	color: #b32d2e !important;
+	border-color: #b32d2e !important;
+}
+
+.sovi-remove-faq-row:hover {
+	color: #a00 !important;
+	background: #b32d2e !important;
+	border-color: #a00 !important;
+}
+
+/* Toggle visibility for properties container based on checkbox */
+.sovi-metabox-wrapper .sovi-schema-disabled-notice {
+	background: #fcf0f1;
+	border-left: 4px solid #b32d2e;
+	padding: 8px 12px;
+	margin: 8px 0;
+	color: #b32d2e;
+	font-size: 12px;
+}

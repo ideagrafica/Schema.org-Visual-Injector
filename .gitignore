@@ -1,0 +1,40 @@
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+._*
+.Spotlight-V100
+.Trashes
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Node modules (if using build tools)
+node_modules/
+package-lock.json
+
+# Log files
+*.log
+npm-debug.log*
+
+# Archives
+*.zip
+*.tar.gz
+
+# Build artifacts
+dist/
+build/
+
+# WordPress
+wp-config.php
+wp-content/upgrade/
+wp-content/cache/
+wp-content/debug.log
+
+# Plugin specific
+languages/*.po~
+*.tmp
